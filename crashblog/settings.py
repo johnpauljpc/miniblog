@@ -1,8 +1,5 @@
 import os
-import django_heroku
-import dj_database_url
-#from decouple import config
-from decouple import *
+
 
 
 
@@ -23,7 +20,7 @@ SECRET_KEY = 'django-insecure-$0z4jk#3quxqx3@v83s0ijv($&x19da%1hhsw2#-+%fu_vl6i_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -35,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sitemaps',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'core',
     'blog',
@@ -50,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'crashblog.urls'
@@ -120,6 +119,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS=[os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 MEDIA_URL='/media/'
 
@@ -132,4 +132,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
 
-django_heroku.settings(locals())
