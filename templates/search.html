@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+{%block title%} Search{%endblock title%}
+
+      
+{%block content%} 
+
+<div class="content is-medium">  
+   <h1> Search results</h1>
+   <h3>Query "{{query}}"</h3>
+</div>
+   <div>
+
+  
+  
+	{%for post in posts%}
+ <a  href="{% url 'detail' post.category.slug post.slug%}">
+    <div class="container">
+        <b class="subtitle is-5 has-text-grey">{{post.date_posted|timesince}}</b><br>
+    {{post.slug}}<br>
+    <b class="title has-text-black is-3">{{post.intro}}</b>
+    </div>
+</a>
+
+    
+    
+ </div>
+
+ {% empty %}
+   <div class="content">
+      <p>No Result for  {{query}}...</p>
+      
+   </div>
+
+  {%endfor%}
+
+
+{%endblock content%}

@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+
+{%block title%}{{posts.title}}{%endblock title%}
+
+{%block content%}
+
+
+
+
+<div class="content is-medium">
+  {%if posts.image%}
+    <div class="content is-medium">
+        <figure class="image">
+        <img  src="{{posts.image.url}}">
+    </figure>
+    </div>
+    {%endif%}
+  <h2 class="subtitle is-5 has-text-grey">{{posts.date_posted|timesince}}</h2>
+  <h1 class="title has-text-black is-3">{{posts.title}}</h1>
+  <p class="has-text-dark">{{posts.body}}</p>
+  <p><small>Category: <a href="{%url 'category' posts.category.slug %}">{{posts.category}}</a></small></p>
+  <hr>
+
+<div class="container">
+  <div class='container'>
+  <form method="POST">
+  {%csrf_token%}
+  {{form|crispy}}
+   <button class="btn btn-outline-success" type="submit">Comment</button>
+</form>
+
+<div class="is-medium">
+  {%for comment in comments%}
+<div class="media box"><div class="media-content">
+<strong>{{comment.name}}</strong><small>{{comment.comment_date|timesince}}</small><br>
+<strong>{{posts.title}}</strong><br>
+
+{{comment.body}}
+</div></div>
+{%endfor%}
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+    {%endblock content%}

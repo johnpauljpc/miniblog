@@ -1,0 +1,88 @@
+{%load static%}
+{%load crispy_forms_tags%}
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	<title>{%block title%}{%endblock title%}|Crash blog</title>
+	 <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.3/css/bulma.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="../css/bulma-divider.min.css">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+		body {font-family: 'Nunito', sans-serif;};
+		nav.navbar {
+			height: 6rem !important;
+			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06) !important;
+		}
+	</style>
+</head>
+<body>
+	 <!-- START NAV -->
+	<nav class="navbar">
+		<div class="container">
+			<div class="navbar-brand">
+				<a class="navbar-item" href="{% url 'home' %}">
+					<img  width="90" src="{%static 'images/logo.png'%}" alt="Logo">
+				</a>
+				<span class="navbar-burger burger" data-target="navbarMenu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</div>
+			<div id="navbarMenu" class="navbar-menu">
+				<div class="navbar-end">
+					<div class=" navbar-item">
+						<form method="GET" action="{%url 'search' %}">
+						<div class="control has-icons-left">
+							<input class="input is-rounded" name="query" type="text" placeholder="Search">
+						
+							<span class="icon is-left">
+								<i class="fa fa-search"></i>
+							</span>
+						</div>
+						</form>
+					</div>
+					<a href="{% url 'home'%}" class="navbar-item is-active is-size-5 has-text-weight-semibold">
+						Home
+					</a>
+					<a class="navbar-item is-size-5 has-text-weight-semibold" href="{% url 'about'%}">
+						About
+					</a>
+					<a class="navbar-item is-size-5 has-text-weight-semibold">
+						Sign up
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- END NAV -->
+
+
+<section class="section">
+	
+{%block content%}
+{%endblock content%}
+
+</section>
+
+
+<footer class="footer">
+		<div class="content has-text-centered">
+			<p> copyright &copy;  2022 - crashblog</p>
+	</div>
+</footer>
+
+
+<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

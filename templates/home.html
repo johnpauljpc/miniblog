@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+
+{%block title%} Home {%endblock title%}
+
+
+
+
+<!-- Articles -->
+
+<style type="text/css">
+    .img2{
+        height: 20;
+        width: 20;
+    }
+</style>
+      
+{%block content%} 
+<h3> Crashblog Updates</h3>
+<div class="content is-medium">  
+
+  
+  
+	{%for post in posts%}
+    <a href="{%url 'detail' post.category.slug post.slug%}">{{post.slug}}</a><br>
+    {%if post.image%}
+    <div class="content is-medium">
+        <figure class="image">
+        <img class="img2"  src="{{post.image.url}}">
+    </figure>
+    </div>
+    {%endif%}
+
+    <b class="subtitle is-5 has-text-grey">{{post.date_posted|timesince}}</b><br>
+    
+    <b class="title has-text-black is-3">{{post.title}}</b>
+    <p class="has-text-dark">{{post.intro}}</p>
+ </div>
+  {%endfor%}
+
+
+         
+
+
+          
+
+
+   
+  
+
+
+{%endblock content%}
